@@ -1,0 +1,77 @@
+/*
+* Copyright (C) 2016 Spreadtrum Communication Incorporated
+*               http://www.spreadtrum.com/
+*
+* This program is free software; you can redistribute it and/or modify
+* it under the terms of the GNU General Public License version 2 as
+* published by the Free Software Foundation.
+*/
+
+#ifndef __SPRD_SHARKL_MODEM_VOLTE_H
+#define __SPRD_SHARKL_MODEM_VOLTE_H
+
+#define DFS_ON_ARM7
+#define DFS_PARAM_SRC_ADDR     0x0001c0c
+#define DFS_PARAM_TARGET_ADDR  0x50805400
+#define DFS_PARAM_LEN  0x400
+
+//#define CONFIG_SUPPORT_TDLTE
+#define TDDSP_ADR       0x88020000
+#define CONFIG_SUPPORT_LTE
+//#define CONFIG_SUPPORT_WLTE
+//#define CONFIG_SUPPORT_GSM
+
+#define LTE_GDSP_LOAD_OFFSET	0x20000
+
+#define LTE_FIXNV_SIZE 0x0006C000 // 272K the max size is 512k
+#define LTE_RUNNV_SIZE 0x00090000 // 400k the max size is 512k
+#define LTE_FIXNV_ADDR 0x8A983000
+#define LTE_RUNNV_ADDR (LTE_FIXNV_ADDR + LTE_FIXNV_SIZE)
+#define LTE_MODEM_SIZE 0x00E00000 /*dat modem*/
+#define LTE_MODEM_ADDR 0x8AA89000
+#define LTE_LDSP_SIZE  0x00b00000
+#define LTE_LDSP_ADDR  0x89900000
+#define LTE_GDSP_SIZE  0x002E0000
+#define LTE_GDSP_ADDR (0x89600000 + LTE_GDSP_LOAD_OFFSET)
+
+#define WL_WARM_SIZE 0x00200000
+#define WL_WARM_ADDR 0X8CE00000
+
+#define GSM_FIXNV_SIZE 0x20000
+#define GSM_FIXNV_ADDR 0x88a90000
+#define GSM_RUNNV_SIZE 0x40000
+#define GSM_RUNNV_ADDR 0x88ab0000
+#define GSM_MODEM_ADDR 0X88400000  //equal to WL_DSDA_WARM_ADDR
+#define GSM_MODEM_SIZE 0x670000    //equal to WL_DSDA_WARM_SIZE
+#define GSM_DSP_ADDR   0x88000000
+#define GSM_DSP_SIZE   0x400000
+#define FIXNV_SIZE     LTE_FIXNV_SIZE
+
+#define CONFIG_DFS_ENABLE
+#define DFS_ADDR    0x50800000
+#define DFS_SIZE    32768 //32K
+
+#define PHYS_OFFSET_ADDR			0x80000000
+//#define TD_CP_OFFSET_ADDR			0x8000000	/*128*/
+//#define TD_CP_SDRAM_SIZE			0x1200000	/*18M*/
+//#define WCDMA_CP_OFFSET_ADDR		0x10000000	/*256M*/
+//#define WCDMA_CP_SDRAM_SIZE		0x4000000	/*64M*/
+#define GGE_CP_OFFSET_ADDR 		0x08000000       /*128M*/
+#define GGE_CP_SDRAM_SIZE 		0x01600000 	/*22M*/
+#define LTE_CP_OFFSET_ADDR      0x09600000     /*150M*/
+#define LTE_CP_SDRAM_SIZE       0x03180000     /*49.5M*/
+#define PMIC_IRAM_ADDR 		0x50800000       /*pmic arm7 iram address remap at AP side*/
+#define PMIC_IRAM_SIZE 		0x8000       /*32K*/
+#define SIPC_APCP_RESET_ADDR_SIZE	0xC00	/*3K*/
+#define SIPC_APCP_RESET_SIZE	0x1000	/*4K*/
+#define CALIBRATION_CMDLINE_SIZE 0x400	/*1K*/
+//#define SIPC_TD_APCP_START_ADDR		(PHYS_OFFSET_ADDR + TD_CP_OFFSET_ADDR + TD_CP_SDRAM_SIZE - SIPC_APCP_RESET_SIZE)	/*0x897FF000*/
+//#define SIPC_WCDMA_APCP_START_ADDR	(PHYS_OFFSET_ADDR + WCDMA_CP_OFFSET_ADDR + WCDMA_CP_SDRAM_SIZE - SIPC_APCP_RESET_SIZE) /*0x93FFF000*/
+#define SIPC_GGE_APCP_START_ADDR 	(PHYS_OFFSET_ADDR + GGE_CP_OFFSET_ADDR + GGE_CP_SDRAM_SIZE - SIPC_APCP_RESET_SIZE) 	/*0x895ff000*/
+#define SIPC_LTE_APCP_START_ADDR    (0x8A981000)
+#define SIPC_PMIC_SIPC_START_ADDR   (0x5000B000)         /*0x50807400*/
+#define CALIBRATION_FLAG_CP0        (0x88AF0000)
+#define CALIBRATION_FLAG_CP1        (0x8A982800)
+
+#endif /* __SPRD_SHARKL_MODEM_VOLTE_H */
+
